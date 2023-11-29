@@ -14,14 +14,24 @@ body {
 }
 
 main {
-    width: 100vh;
+    width: 150vh;
     height: 100vh;
     background-color: white;
     text-align: center;
     border: 0.5vmin solid black;
+    padding-left: 10vmin;
+    padding-right: 10vmin;
 }
 
 #gboard {
     height: 60vmin;
+    border: 0.5vmin solid black;
+}
+
+#sword {
+    border: 0.5vmin solid black;
+}
+
+#guesses {
     border: 0.5vmin solid black;
 }

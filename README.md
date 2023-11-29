@@ -36,10 +36,16 @@ font-family: Arial, Helvetica, sans-serif;
 ## Psuedocode
 
 1) Define required constants
+    - word choices
 
 2) Define required variables used to track the state of the game
+    - winner
+    - letter choice
+    - random word
 
 3) Store elements on the page that will be accessed in code more than once in variables to make code more concise, readable and performant.
+    - letters guessed
+    - letters correct
 
 4) Upon loading the app should:
   4.1) Initialize the state variables
