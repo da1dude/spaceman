@@ -10,15 +10,15 @@
 <body>
 
     <main class="flx-ctr">
-        <h1>Spaceman</h1>
+        <h1>SPACEMAN</h1>
         <h2 id="status">STATUS</h2>
         <!-- <h2 id="choice">choice</h2> -->
         <div>   
-            <input type="text" id="guess" required minlength="1" maxlength="1"/>
+            <input type="text" id="guess" required minlength="1" maxlength="1" onkeydown="return /[a-zA-Z]/i.test(event.key)"/>
             <button id="submit">Submit</button>
         </div> 
         <h2 id="gboard">board </h2>
-        <h2 id="sword">sword</h2>
+        <h2 id="hword"></h2>
         <h2 id="guesses">guesses</h2>
         <button id="reset">RESET</button>
     </main>

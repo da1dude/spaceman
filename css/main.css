@@ -55,7 +55,8 @@ input {
     border-radius: 4vmin;
     outline: none;
     text-align: center;
-    bold
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 button:hover {
