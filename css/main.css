@@ -14,7 +14,7 @@ body {
 }
 
 main {
-    width: 150vh;
+    width: 100vh;
     height: 100vh;
     background-color: white;
     text-align: center;
@@ -34,4 +34,31 @@ main {
 
 #guesses {
     border: 0.5vmin solid black;
+}
+
+button {
+    justify-self: center;
+    width: 15vmin;
+    background-color: white;
+    color: black;
+    border: 0.5vmin solid black;
+    border-radius: 4vmin;
+    outline: none;
+}
+
+input {
+    justify-self: center;
+    width: 10vmin;
+    background-color: white;
+    color: black;
+    border: 0.5vmin solid black;
+    border-radius: 4vmin;
+    outline: none;
+    text-align: center;
+    bold
+}
+
+button:hover {
+    background-color: black;
+    color: white;
 }
