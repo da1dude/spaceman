@@ -2,9 +2,9 @@
 Spaceman is a friendly version of hangman. In this game a spaceship is built as incorrect guesses occur (max of 7). If the player makes too many incorrect guesses the spaceship takes off. The player wins the game by completing the word with guesses still available. 
 
 ## Wireframes
-wireframe/loss.png 
-wireframe/template.png 
-wireframe/win.png
+![template](wireframe/template.png) 
+![loss](wireframe/loss.png) 
+![win](wireframe/win.png)
 
 
 # Images to display to the DOM
@@ -30,4 +30,3 @@ wireframe/win.png
 ##### Font
 ```css
 font-family: Arial, Helvetica, sans-serif;
-```
