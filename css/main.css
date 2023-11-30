@@ -23,6 +23,14 @@ main {
     padding-right: 10vmin;
 }
 
+img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75px;
+    width: 400px;
+}
+
 #gboard {
     height: 60vmin;
     border: 0.5vmin solid black;
