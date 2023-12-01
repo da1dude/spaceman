@@ -26,17 +26,20 @@ main {
 h2 {
     height: 40px;
 }
+
 img {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 75px;
-    width: 400px;
+    height: 55vmin;
+    width: 50vmin;
+
 }
 
 #gboard {
-    height: 60vmin;
+    display: flexbox;
+    align-items: center;
+    justify-content: center;
+    height: 56vmin;
     border: 0.5vmin solid black;
+    line-height: 0%;
 }
 
 #sword {
@@ -72,5 +75,5 @@ input {
 
 button:hover {
     background-color: black;
-    color: white;
+    color: green;
 }

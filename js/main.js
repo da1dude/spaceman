@@ -32,6 +32,7 @@ const hiddenWordEl = document.getElementById('hword')
 const guessesEl = document.getElementById('guesses')
 const statusEl = document.getElementById('status')
 const formEl = document.getElementById('form')
+const imgEl = document.querySelector('img');
 //console.log("this is hword value: ", hiddenWordEl)
 const gboardEl1 = document.getElementById('ship1')
 const gboardEl2 = document.getElementById('ship2')
@@ -60,6 +61,7 @@ function init() {
     console.log("hidden word is: ", hiddenWord)
     //eventually call render   
     render() 
+    renderShip()
 }
 
 init()
@@ -72,14 +74,13 @@ function renderHiddenWord() {
         hiddenWordtoSpace = document.createElement("span");
 		hiddenWordtoSpace.innerText = "__ ";
         hiddenWordtoSpace.setAttribute("id", `space-${i}`);
-        hword.appendChild(hiddenWordtoSpace);
+        hiddenWordEl.appendChild(hiddenWordtoSpace);
         console.log("this is hword", hword)
 	}
 }
 
 function render(){
     renderHiddenWord()
-    //renderShip()
 }
 
 function handleChoice(evt) {
@@ -117,7 +118,7 @@ function winner() {
     //if the hiddenWord elent = the hiddenWord variable: WIN!!
     if (hiddenWordEl.innerText === hiddenWord) {
         statusEl.innerText="You have won!"
-    } else if (wrongGuesses === 7) {
+    } else if (wrongGuesses === 6) {
         //if wrongGuesses = 7: LOSE!
         statusEl.innerText="You have lost!"
         formEl.style.visibility = 'hidden'
@@ -125,48 +126,15 @@ function winner() {
 }   
 
 function reset() {
-    wrongGuesses = 0
-    guessedLetters = []
-    hiddenWord = wordDB[Math.floor(Math.random() * wordDB.length)]
+    hiddenWordEl.innerText=""
+    guessesEl.innerText=""
+    statusEl.innerText=""
+    init()
 }
 
+
 function renderShip() {
-    if (wrongGuesses === 1) {
-        gboardEl1.src = "imgs/Ship-1.png"
-    } else if (wrongGuesses === 2) {
-        gboardEl1.src = "imgs/Ship-1.png"
-        gboardEl2.src = "imgs/Ship-2.png"
-    } else if (wrongGuesses === 3) {
-        gboardEl1.src = "imgs/Ship-1.png"
-        gboardEl2.src = "imgs/Ship-2.png"
-        gboardEl3.src = "imgs/Ship-3.png"
-    } else if (wrongGuesses === 4) {
-        gboardEl1.src = "imgs/Ship-1.png"
-        gboardEl2.src = "imgs/Ship-2.png"
-        gboardEl3.src = "imgs/Ship-3.png"
-        gboardEl4.src = "imgs/Ship-4.png"
-    } else if (wrongGuesses === 5) {
-        gboardEl1.src = "imgs/Ship-1.png"
-        gboardEl2.src = "imgs/Ship-2.png"
-        gboardEl3.src = "imgs/Ship-3.png"
-        gboardEl4.src = "imgs/Ship-4.png"
-        gboardEl5.src = "imgs/Ship-5.png"
-    } else if (wrongGuesses === 6) {
-        gboardEl1.src = "imgs/Ship-1.png"
-        gboardEl2.src = "imgs/Ship-2.png"
-        gboardEl3.src = "imgs/Ship-3.png"
-        gboardEl4.src = "imgs/Ship-4.png"
-        gboardEl5.src = "imgs/Ship-5.png"
-        gboardEl6.src = "imgs/Ship-6.png"
-    } else if (wrongGuesses === 7) {
-        gboardEl1.src = "imgs/Ship-1.png"
-        gboardEl2.src = "imgs/Ship-2.png"
-        gboardEl3.src = "imgs/Ship-3.png"
-        gboardEl4.src = "imgs/Ship-4.png"
-        gboardEl5.src = "imgs/Ship-5.png"
-        gboardEl6.src = "imgs/Ship-6.png"
-        gboardEl7.src = "imgs/Ship-7.png"
-    }    
+    imgEl.src = `imgs/spaceman-${wrongGuesses}.jpg`; 
 } 
 
 /*------ event listeners ------*/
