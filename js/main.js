@@ -11,28 +11,27 @@
 
 /*------ constants ------*/
 const wordDB = [
-    "BOOM",
+   // "BOOM",
     "HEART",
     "BUZZED",
-    "FIZZY",
+   // "FIZZY",
     "ROGUE",
     "SPHINX",
     "TODAY",
     "PIXEL",
-    "BLESS",
-    "CONNECT",
+  //  "BLESS",
+  //  "CONNECT",
     "LEARN"
 ]
-const hiddenWord = wordDB[Math.floor(Math.random() * wordDB.length)];
-//select the hidden word from wordDB
-console.log("hidden word is: ", hiddenWord)
-
 
 
 /*------ cached element references ------*/
 
 //grabbing the hidden word element - HTML
-const hiddenWordEl = document.getElementById('hword');
+const hiddenWordEl = document.getElementById('hword')
+const guessesEl = document.getElementById('guesses')
+const statusEl = document.getElementById('status')
+const formEl = document.getElementById('form')
 //console.log("this is hword value: ", hiddenWordEl)
 const gboardEl1 = document.getElementById('ship1')
 const gboardEl2 = document.getElementById('ship2')
@@ -45,56 +44,93 @@ const gboardEl7 = document.getElementById('ship7')
 
 
 /*------ App's initial state variables ------*/
-let winner
 let wrongGuesses
 let guessedLetters
+let hiddenWord
+
 
 
 
 /*------ functions ------*/
 function init() {
-    winner = null
     wrongGuesses = 0
     guessedLetters = []
+    hiddenWord = wordDB[Math.floor(Math.random() * wordDB.length)]
+    //select the hidden word from wordDB
+    console.log("hidden word is: ", hiddenWord)
     //eventually call render   
     render() 
-    renderHiddenWord()
 }
 
 init()
 
 function renderHiddenWord() {
+    
     for (let i = 0; i < hiddenWord.length; i++) {
         //for each letter in hiddenWord create a span to hold
         //the hiddenWord spaces in the hword element
-		let letterSpace = document.createElement("span");
-		letterSpace.innerText = '_____ ';
-        letterSpace.setAttribute("id", "spaces");
-        hword.appendChild(letterSpace);
+        hiddenWordtoSpace = document.createElement("span");
+		hiddenWordtoSpace.innerText = "__ ";
+        hiddenWordtoSpace.setAttribute("id", `space-${i}`);
+        hword.appendChild(hiddenWordtoSpace);
+        console.log("this is hword", hword)
 	}
 }
 
 function render(){
-    // renderHiddenWord()
-    renderShip()
+    renderHiddenWord()
+    //renderShip()
 }
 
 function handleChoice(evt) {
     evt.preventDefault();
     //hidden word array split by letter so we can compare them to the guessed letter
     const hiddenWordArray = hiddenWord.split("");
-    console.log("this is the hidden work array", hiddenWordArray)
+    console.log("this is the hidden word array", hiddenWordArray)
     //capturing the user guess and making it upper case
     let userGuess = document.getElementById("guess").value.toUpperCase()
     console.log("this is the userGuessed letter: ", userGuess)
 
-    let spacesArray = document.querySelectorAll("spaces")
+    if (hiddenWordArray.includes(userGuess)) {
+        console.log('guess is in word!!!')
+        console.log('letter index', hiddenWordArray.indexOf(userGuess))
+        //assigning correctGuessIndex to the index of hiddenwordarray(userGuess)
+            //if user guess is correct assigning it the index of the guess
+        const correctGuessIndex = hiddenWordArray.indexOf(userGuess)
+        const letterSpace = document.getElementById(`space-${correctGuessIndex}`)
+        letterSpace.innerText=userGuess
+        // use above //
+    } else {
+        wrongGuesses += 1
+        console.log("current wrong guesses: ", wrongGuesses)
+    } 
+    //updating the guessedLetters array
+    guessedLetters.push(userGuess)
+    console.log("guessed letter aray: ", guessedLetters)
+    //updating the guesses element with the guessedLetters array
+    guessesEl.innerText=guessedLetters
+    renderShip()
+    winner()
+}
 
+function winner() {
+    //if the hiddenWord elent = the hiddenWord variable: WIN!!
+    if (hiddenWordEl.innerText === hiddenWord) {
+        statusEl.innerText="You have won!"
+    } else if (wrongGuesses === 7) {
+        //if wrongGuesses = 7: LOSE!
+        statusEl.innerText="You have lost!"
+        formEl.style.visibility = 'hidden'
+    }
+}   
 
+function reset() {
+    wrongGuesses = 0
+    guessedLetters = []
+    hiddenWord = wordDB[Math.floor(Math.random() * wordDB.length)]
 }
 
 function renderShip() {
-    wrongGuesses = 7
     if (wrongGuesses === 1) {
         gboardEl1.src = "imgs/Ship-1.png"
     } else if (wrongGuesses === 2) {
@@ -136,3 +172,4 @@ function renderShip() {
 /*------ event listeners ------*/
 //document.querySelector('#reset').addEventListener('click', init)
 document.querySelector('#submit').addEventListener('click', handleChoice)
+document.querySelector('#reset').addEventListener('click', reset)
