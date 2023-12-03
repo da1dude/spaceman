@@ -12,22 +12,15 @@
     <main class="flx-ctr">
         <h1>SPACEMAN</h1>
         <h2 id="status"></h2>
-        <!-- <h2 id="choice">choice</h2> -->
-        <div>
-            <form id="form">  
-                <input type="text" id="guess" required minlength="1" maxlength="1" onkeydown="return /[a-zA-Z]/i.test(event.key)"/>
+        <div id="form-area">
+            <form id="formGuess">
+                <label for="guess">Take your best guess:</label>  <br>
+                <input type="text" id="guess" name="guess" required minlength="1" maxlength="1" onkeydown="return /[a-zA-Z]/i.test(event.key)"/>
                 <button id="submit">Submit</button>
             </form>
         </div> 
         <div id="gboard">
             <img src="" alt="spaceman">
-            <!-- <img id="ship7">
-            <img id="ship6">
-            <img id="ship5">
-            <img id="ship4">
-            <img id="ship3">
-            <img id="ship2">
-            <img id="ship1"> -->
         </div>
         <h2 id="hword"></h2>
         <h2 id="guesses"></h2>

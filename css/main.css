@@ -23,6 +23,7 @@ main {
     padding-right: 10vmin;
 }
 
+
 h2 {
     height: 40px;
 }
@@ -34,6 +35,7 @@ img {
 }
 
 #gboard {
+    margin-top: 1vmin;
     display: flexbox;
     align-items: center;
     justify-content: center;
@@ -74,6 +76,5 @@ input {
 }
 
 button:hover {
-    background-color: black;
     color: green;
 }

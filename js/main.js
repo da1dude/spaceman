@@ -12,16 +12,16 @@
 /*------ constants ------*/
 const wordDB = [
    // "BOOM",
-    "HEART",
+    // "HEART",
     "BUZZED",
-   // "FIZZY",
-    "ROGUE",
-    "SPHINX",
-    "TODAY",
+//    // "FIZZY",
+//     "ROGUE",
+//     "SPHINX",
+//     "TODAY",
     "PIXEL",
-  //  "BLESS",
-  //  "CONNECT",
-    "LEARN"
+//   //  "BLESS",
+//   //  "CONNECT",
+//     "LEARN"
 ]
 
 
@@ -31,16 +31,10 @@ const wordDB = [
 const hiddenWordEl = document.getElementById('hword')
 const guessesEl = document.getElementById('guesses')
 const statusEl = document.getElementById('status')
-const formEl = document.getElementById('form')
+const formEl = document.getElementById('formGuess')
 const imgEl = document.querySelector('img');
 //console.log("this is hword value: ", hiddenWordEl)
-const gboardEl1 = document.getElementById('ship1')
-const gboardEl2 = document.getElementById('ship2')
-const gboardEl3 = document.getElementById('ship3')
-const gboardEl4 = document.getElementById('ship4')
-const gboardEl5 = document.getElementById('ship5')
-const gboardEl6 = document.getElementById('ship6')
-const gboardEl7 = document.getElementById('ship7')
+
 
 
 
@@ -48,6 +42,7 @@ const gboardEl7 = document.getElementById('ship7')
 let wrongGuesses
 let guessedLetters
 let hiddenWord
+let dupLtrArr
 
 
 
@@ -59,6 +54,7 @@ function init() {
     hiddenWord = wordDB[Math.floor(Math.random() * wordDB.length)]
     //select the hidden word from wordDB
     console.log("hidden word is: ", hiddenWord)
+    formEl.style.visibility = 'visible'
     //eventually call render   
     render() 
     renderShip()
@@ -85,6 +81,7 @@ function render(){
 
 function handleChoice(evt) {
     evt.preventDefault();
+    dupLtrArr = []
     //hidden word array split by letter so we can compare them to the guessed letter
     const hiddenWordArray = hiddenWord.split("");
     console.log("this is the hidden word array", hiddenWordArray)
@@ -92,15 +89,27 @@ function handleChoice(evt) {
     let userGuess = document.getElementById("guess").value.toUpperCase()
     console.log("this is the userGuessed letter: ", userGuess)
 
-    if (hiddenWordArray.includes(userGuess)) {
-        console.log('guess is in word!!!')
-        console.log('letter index', hiddenWordArray.indexOf(userGuess))
-        //assigning correctGuessIndex to the index of hiddenwordarray(userGuess)
-            //if user guess is correct assigning it the index of the guess
-        const correctGuessIndex = hiddenWordArray.indexOf(userGuess)
-        const letterSpace = document.getElementById(`space-${correctGuessIndex}`)
-        letterSpace.innerText=userGuess
-        // use above //
+   if (hiddenWordArray.includes(userGuess)) {
+        // console.log('guess is in word!!!')
+        // console.log('letter index', hiddenWordArray.indexOf(userGuess))
+        // //assigning correctGuessIndex to the index of hiddenwordarray(userGuess)
+        //     //if user guess is correct assigning it the index of the guess
+        // const correctGuessIndex = hiddenWordArray.indexOf(userGuess)
+        // const letterSpace = document.getElementById(`space-${correctGuessIndex}`)
+        // letterSpace.innerText=userGuess
+
+        // hiddenWordArray.forEach((ltr, idx) => { if(userGuess == ltr){ dupLtrArr.push({letter: ltr, ind: idx})}})
+        // console.log("this is the duplicate letters: ", dupLtrArr)
+        for (var i = 0; i < hiddenWord.length; i++) {
+            if (hiddenWordArray[i]=== userGuess) {
+                //const correctGuessIndex = hiddenWordArray.indexOf(userGuess)
+                const letterSpace = document.getElementById(`space-${i}`)
+                letterSpace.innerText=userGuess
+            }
+            
+      }
+
+        
     } else {
         wrongGuesses += 1
         console.log("current wrong guesses: ", wrongGuesses)
@@ -110,6 +119,8 @@ function handleChoice(evt) {
     console.log("guessed letter aray: ", guessedLetters)
     //updating the guesses element with the guessedLetters array
     guessesEl.innerText=guessedLetters
+    //blank out the guess box
+    document.getElementById('guess').value = ''
     renderShip()
     winner()
 }
