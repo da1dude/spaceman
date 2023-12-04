@@ -11,17 +11,27 @@
 
 /*------ constants ------*/
 const wordDB = [
-   // "BOOM",
-    // "HEART",
+    "BOOM",
+    "HEART",
     "BUZZED",
-//    // "FIZZY",
-//     "ROGUE",
-//     "SPHINX",
-//     "TODAY",
+    "FIZZY",
+    "ROGUE",
+    "SPHINX",
+    "TODAY",
     "PIXEL",
-//   //  "BLESS",
-//   //  "CONNECT",
-//     "LEARN"
+    "BLESS",
+    "CONNECT",
+    "LEARN",
+    "FOLLOW",
+    "DANGER",
+    "WELCOME",
+    "AFFIX",
+    "LENGTHS",
+    "GALAXY",
+    "LUCKY",
+    "AWKWARD",
+    "SUBWAY",
+    "TRANSCRIPT"
 ]
 
 
@@ -89,11 +99,11 @@ function handleChoice(evt) {
     let userGuess = document.getElementById("guess").value.toUpperCase()
     console.log("this is the userGuessed letter: ", userGuess)
 
-   if (hiddenWordArray.includes(userGuess)) {
-        // console.log('guess is in word!!!')
+    if (hiddenWordArray.includes(userGuess)) {
+        console.log('guess is in word!!!')
         // console.log('letter index', hiddenWordArray.indexOf(userGuess))
-        // //assigning correctGuessIndex to the index of hiddenwordarray(userGuess)
-        //     //if user guess is correct assigning it the index of the guess
+        //assigning correctGuessIndex to the index of hiddenwordarray(userGuess)
+            //if user guess is correct assigning it the index of the guess
         // const correctGuessIndex = hiddenWordArray.indexOf(userGuess)
         // const letterSpace = document.getElementById(`space-${correctGuessIndex}`)
         // letterSpace.innerText=userGuess
@@ -101,13 +111,19 @@ function handleChoice(evt) {
         // hiddenWordArray.forEach((ltr, idx) => { if(userGuess == ltr){ dupLtrArr.push({letter: ltr, ind: idx})}})
         // console.log("this is the duplicate letters: ", dupLtrArr)
         for (var i = 0; i < hiddenWord.length; i++) {
+            //the above commented code was only working for 1 letter if there where duplicates. 
+            //it was recomended to make a loop to iterate over the array to resolve that issue.
             if (hiddenWordArray[i]=== userGuess) {
-                //const correctGuessIndex = hiddenWordArray.indexOf(userGuess)
+                //does hidden word array(letter in array = user Guess?)
+                
+                //const correctGuessIndex = hiddenWordArray.indexOf(userGuess)  //old code
                 const letterSpace = document.getElementById(`space-${i}`)
+                //set letterSpace = to the elementID(blank space id ())
                 letterSpace.innerText=userGuess
+                //apply letterSpace value to the HTML element
             }
             
-      }
+    }
 
         
     } else {
