@@ -43,6 +43,7 @@ const guessesEl = document.getElementById('guesses')
 const statusEl = document.getElementById('status')
 const formEl = document.getElementById('formGuess')
 const imgEl = document.querySelector('img');
+const titleEl = document.querySelector('h1');
 //console.log("this is hword value: ", hiddenWordEl)
 
 
@@ -64,6 +65,9 @@ function init() {
     //select the hidden word from wordDB
     console.log("hidden word is: ", hiddenWord)
     formEl.style.visibility = 'visible'
+    titleEl.classList.remove("animation") //remove the applied animation class
+    titleEl.offsetWidth //this causes a DOM reflow to allow for the animation class list to work on RESET
+    titleEl.classList.add("animation") //add the applied animation class
     //eventually call render   
     render() 
     renderShip()
@@ -132,7 +136,7 @@ function winner() {
     } else if (wrongGuesses === 6) {
         //if wrongGuesses = 6: LOSE!
         statusEl.innerText="Spaceman has gotten away. Try again!!"
-        statusEl.style.color = "red"
+        statusEl.style.color = "darkred"
         statusEl.style.textShadow = "4px 4px 20px #000000"
         formEl.style.visibility = 'hidden'
     }
