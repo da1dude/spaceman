@@ -11,6 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: grey;
+    display: flexbox;
 }
 
 main {
@@ -25,10 +26,15 @@ main {
 }
 
 h1 {
-    font-size: 30px;
+    margin-top: 4vmin;
+    margin-bottom: 1vmin;
+    font-size: 2.5em;
+    color: white;
+    text-shadow: 4px 4px 20px #000000;
 }
 
 h2 {
+    margin: 1vmin;
     height: 40px;
 }
 
@@ -38,9 +44,13 @@ img {
 
 }
 
+#status {
+    margin: auto;
+}
+
 #gboard {
     margin-top: 1vmin;
-    display: flexbox;
+    display: flex;
     align-items: center;
     justify-content: center;
     height: 56vmin;
@@ -68,6 +78,7 @@ button {
     border: 0.5vmin solid black;
     border-radius: 4vmin;
     outline: none;
+    font-size: 0.8em;
 }
 
 input {

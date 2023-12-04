@@ -52,7 +52,6 @@ const imgEl = document.querySelector('img');
 let wrongGuesses
 let guessedLetters
 let hiddenWord
-let dupLtrArr
 
 
 
@@ -81,7 +80,7 @@ function renderHiddenWord() {
 		hiddenWordtoSpace.innerText = "__ ";
         hiddenWordtoSpace.setAttribute("id", `space-${i}`);
         hiddenWordEl.appendChild(hiddenWordtoSpace);
-        console.log("this is hword", hword)
+        //console.log("this is hword", hword)
 	}
 }
 
@@ -91,7 +90,6 @@ function render(){
 
 function handleChoice(evt) {
     evt.preventDefault();
-    dupLtrArr = []
     //hidden word array split by letter so we can compare them to the guessed letter
     const hiddenWordArray = hiddenWord.split("");
     console.log("this is the hidden word array", hiddenWordArray)
@@ -100,32 +98,16 @@ function handleChoice(evt) {
     console.log("this is the userGuessed letter: ", userGuess)
 
     if (hiddenWordArray.includes(userGuess)) {
-        console.log('guess is in word!!!')
-        // console.log('letter index', hiddenWordArray.indexOf(userGuess))
-        //assigning correctGuessIndex to the index of hiddenwordarray(userGuess)
-            //if user guess is correct assigning it the index of the guess
-        // const correctGuessIndex = hiddenWordArray.indexOf(userGuess)
-        // const letterSpace = document.getElementById(`space-${correctGuessIndex}`)
-        // letterSpace.innerText=userGuess
-
-        // hiddenWordArray.forEach((ltr, idx) => { if(userGuess == ltr){ dupLtrArr.push({letter: ltr, ind: idx})}})
-        // console.log("this is the duplicate letters: ", dupLtrArr)
         for (var i = 0; i < hiddenWord.length; i++) {
-            //the above commented code was only working for 1 letter if there where duplicates. 
             //it was recomended to make a loop to iterate over the array to resolve that issue.
-            if (hiddenWordArray[i]=== userGuess) {
+            if (hiddenWordArray[i] === userGuess) {
                 //does hidden word array(letter in array = user Guess?)
-                
-                //const correctGuessIndex = hiddenWordArray.indexOf(userGuess)  //old code
                 const letterSpace = document.getElementById(`space-${i}`)
                 //set letterSpace = to the elementID(blank space id ())
                 letterSpace.innerText=userGuess
                 //apply letterSpace value to the HTML element
             }
-            
-    }
-
-        
+        }
     } else {
         wrongGuesses += 1
         console.log("current wrong guesses: ", wrongGuesses)
@@ -144,27 +126,34 @@ function handleChoice(evt) {
 function winner() {
     //if the hiddenWord elent = the hiddenWord variable: WIN!!
     if (hiddenWordEl.innerText === hiddenWord) {
-        statusEl.innerText="You have won!"
+        statusEl.innerText="Spaceman has been stopped. You have won!!"
+        statusEl.style.color = "lightgreen"
+        statusEl.style.textShadow = "4px 4px 20px #000000"
     } else if (wrongGuesses === 6) {
-        //if wrongGuesses = 7: LOSE!
-        statusEl.innerText="You have lost!"
+        //if wrongGuesses = 6: LOSE!
+        statusEl.innerText="Spaceman has gotten away. Try again!!"
+        statusEl.style.color = "red"
+        statusEl.style.textShadow = "4px 4px 20px #000000"
         formEl.style.visibility = 'hidden'
     }
 }   
 
 function reset() {
+    //reset the hiddenWord element to blank
     hiddenWordEl.innerText=""
+    //reset the guessed letters to blank
     guessesEl.innerText=""
+    //reset the status element
     statusEl.innerText=""
     init()
 }
 
 
 function renderShip() {
-    imgEl.src = `imgs/spaceman-${wrongGuesses}.jpg`; 
+    //render the spaceman based on wrong guesses
+    imgEl.src = `imgs/GIR${wrongGuesses}.jpeg`; 
 } 
 
 /*------ event listeners ------*/
-//document.querySelector('#reset').addEventListener('click', init)
 document.querySelector('#submit').addEventListener('click', handleChoice)
 document.querySelector('#reset').addEventListener('click', reset)
