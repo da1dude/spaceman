@@ -12,13 +12,13 @@
 </head>
 <body>
 
-    <main class="flx-ctr">
-        <h1 id="animation">SPACEMAN</h1>
+    <main>
+        <h1>SPACEMAN</h1>
         <h2 id="status"></h2>
         <div id="form-area">
             <form id="formGuess">
                 <label for="guess">Take your best guess:</label>  <br>
-                <input type="text" id="guess" name="guess" required minlength="1" maxlength="1" onkeydown="return /[a-zA-Z]/i.test(event.key)"/>
+                <input type="text" id="guess" name="guess" autofocus minlength="1" maxlength="1" onkeydown="return /[A-Z]/i.test(event.key)"/>
                 <button id="submit">Submit</button>
             </form>
         </div> 

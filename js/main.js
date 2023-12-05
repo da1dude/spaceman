@@ -10,6 +10,10 @@
 //code win/loss logic
 
 /*------ constants ------*/
+
+const CORRECT = new Audio("audio/correct.mp3")
+const WRONG = new Audio("audio/wrong.mp3")
+
 const wordDB = [
     "BOOM",
     "HEART",
@@ -102,6 +106,8 @@ function handleChoice(evt) {
     console.log("this is the userGuessed letter: ", userGuess)
 
     if (hiddenWordArray.includes(userGuess)) {
+        //play correct sound
+        CORRECT.play()
         for (var i = 0; i < hiddenWord.length; i++) {
             //it was recomended to make a loop to iterate over the array to resolve that issue.
             if (hiddenWordArray[i] === userGuess) {
@@ -113,6 +119,8 @@ function handleChoice(evt) {
             }
         }
     } else {
+        //play incorrect sound
+        WRONG.play()
         wrongGuesses += 1
         console.log("current wrong guesses: ", wrongGuesses)
     } 
@@ -135,7 +143,7 @@ function winner() {
         statusEl.style.textShadow = "4px 4px 20px #000000"
     } else if (wrongGuesses === 6) {
         //if wrongGuesses = 6: LOSE!
-        statusEl.innerText="Spaceman has gotten away. Try again!!"
+        statusEl.innerText=`Spaceman has gotten away. The word was ${hiddenWord} Try again!!`
         statusEl.style.color = "darkred"
         statusEl.style.textShadow = "4px 4px 20px #000000"
         formEl.style.visibility = 'hidden'

@@ -11,13 +11,11 @@
 
 body {
     margin: 0;
-    font-family: Helvetica;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: grey;
-    display: flexbox;
 }
 
 main {
@@ -29,6 +27,7 @@ main {
     padding-left: 10vmin;
     padding-right: 10vmin;
     border-radius: 4vmin;
+    box-shadow: 4px 4px 20px #000000;
 }
 
 h1 {
@@ -71,6 +70,7 @@ img {
     line-height: 0%;
     background-color: white;
     border-radius: 4vmin;
+    box-shadow: 4px 4px 20px #000000;
 }
 
 #sword {
@@ -81,6 +81,7 @@ img {
     border: 0.5vmin solid black;
     background-color: white;
     border-radius: 4vmin;
+    box-shadow: 4px 4px 20px #000000;
 }
 
 
