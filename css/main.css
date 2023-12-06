@@ -51,7 +51,7 @@ h2 {
 }
 
 img {
-    height: 55vmin;
+    height: 48vmin;
     width: 50vmin;
 
 }
@@ -65,7 +65,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 56vmin;
+    height: 50vmin;
     border: 0.5vmin solid black;
     line-height: 0%;
     background-color: white;
@@ -84,6 +84,9 @@ img {
     box-shadow: 4px 4px 20px #000000;
 }
 
+#form-db-choice {
+    padding-top: 4vmin;
+}
 
 input {
     justify-self: center;

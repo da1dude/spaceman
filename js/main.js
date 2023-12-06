@@ -14,7 +14,7 @@
 const CORRECT = new Audio("audio/correct.mp3")
 const WRONG = new Audio("audio/wrong.mp3")
 
-const wordDB = [
+const db1 = [
     "BOOM",
     "HEART",
     "BUZZED",
@@ -29,21 +29,45 @@ const wordDB = [
     "FOLLOW",
     "DANGER",
     "WELCOME",
-    "AFFIX",
-    "LENGTHS",
-    "GALAXY",
-    "LUCKY",
-    "AWKWARD",
-    "SUBWAY",
-    "TRANSCRIPT"
+    "AFFIX"
 ]
 
-const rockBandsDB = [
+const db2 = [
     "PIXIES",
     "QEEEN",
     "NIRVANA",
     "BEATLES",
-    "METALLICA"
+    "METALLICA",
+    "FOREIGNER",
+    "ACDC",
+    "CURE",
+    "AEROSMITH",
+    "EAGLES",
+    "JOURNEY",
+    "REM",
+    "RUSH",
+    "COLDPLAY",
+    "SOUNDGARDEN"
+]
+
+const db3 = [
+    "RED",
+    "YELLOW",
+    "GREEN",
+    "PINK",
+    "BLUE",
+    "ORANGE",
+    "TEAL",
+    "BLACK",
+    "PURPLE",
+    "WHITE",
+    "CYAN",
+    "BROWN",
+    "GREY",
+    "MAGENTA",
+    "LAVENDER"
+
+
 ]
 
 
@@ -56,8 +80,7 @@ const statusEl = document.getElementById('status')
 const formEl = document.getElementById('formGuess')
 const imgEl = document.querySelector('img');
 const titleEl = document.querySelector('h1');
-const dbChoiceEl = document.querySelector('db-choice');
-//console.log("this is hword value: ", hiddenWordEl)
+const dbChoiceEl = document.querySelector('form-choice');
 
 
 
@@ -73,12 +96,14 @@ let dbChoice
 
 /*------ functions ------*/
 function init() {
+    chooseDB() //first choose the DB to use
     wrongGuesses = 0
     guessedLetters = []
-    hiddenWord = wordDB[Math.floor(Math.random() * wordDB.length)]
+    //hiddenWord = wordDB[Math.floor(Math.random() * wordDB.length)]
     //select the hidden word from wordDB
     console.log("hidden word is: ", hiddenWord)
     formEl.style.visibility = 'visible'
+    statusEl.innerText="Select a topic and start your guessing!" //setting the default text
     titleEl.classList.remove("animation") //remove the applied animation class to the h1(title)
     titleEl.offsetWidth //this causes a DOM reflow to allow for the animation class list to work on RESET button
     titleEl.classList.add("animation") //add the applied animation class to the h1(title)
@@ -89,10 +114,18 @@ function init() {
 init()
 
 function chooseDB() {
-    dbChoice = document.getElementById("db-choice").id
-    console.log("This is DB Choice", dbChoice)
+    //grabing the value of the form HTML to choose which DB to use
+    dbChoice = document.getElementById("db-choice").value
+    //selecting the DB to use based on dbChoice
+    hiddenWord = `${dbChoice}`[Math.floor(Math.random() * `${dbChoice}`.length)]
+    if (dbChoice === "db1") {
+        hiddenWord = db1[Math.floor(Math.random() * db1.length)]
+    } else if (dbChoice === "db2") {
+        hiddenWord = db2[Math.floor(Math.random() * db2.length)]
+    } else if (dbChoice === "db3") {
+        hiddenWord = db3[Math.floor(Math.random() * db3.length)]
+    }
 }
-chooseDB()
 
 function renderHiddenWord() {
     
@@ -112,6 +145,7 @@ function render(){
 }
 
 function handleChoice(evt) {
+    //prevents the default action of form in HTML
     evt.preventDefault();
     //hidden word array split by letter so we can compare them to the guessed letter
     const hiddenWordArray = hiddenWord.split("");
@@ -124,7 +158,7 @@ function handleChoice(evt) {
         //play correct sound
         CORRECT.play()
         for (var i = 0; i < hiddenWord.length; i++) {
-            //it was recomended to make a loop to iterate over the array to resolve that issue.
+            //looping over the array to find all the values that match userGuess
             if (hiddenWordArray[i] === userGuess) {
                 //does hidden word array(letter in array = user Guess?)
                 const letterSpace = document.getElementById(`space-${i}`)
@@ -145,7 +179,7 @@ function handleChoice(evt) {
     //updating the guesses element with the guessedLetters array
     guessesEl.innerText=guessedLetters
     //blank out the guess box
-    document.getElementById('guess').value = ''
+    document.getElementById('guess').value = ""
     renderShip()
     winner()
 }
@@ -157,13 +191,16 @@ function winner() {
         statusEl.innerText="Spaceman has been stopped. You have won!!"
         statusEl.style.color = "lightgreen"
         statusEl.style.textShadow = "4px 4px 20px #000000"
+        //hdie the guess area on win
+        formEl.style.visibility = "hidden"
     } else if (wrongGuesses === 6) {
         //if wrongGuesses = 6: LOSE!
         //update and style the element
         statusEl.innerText=`Spaceman has gotten away. The word was ${hiddenWord} Try again!!`
         statusEl.style.color = "darkred"
         statusEl.style.textShadow = "4px 4px 20px #000000"
-        formEl.style.visibility = 'hidden'
+        //hdie the guess area on lose
+        formEl.style.visibility = "hidden"
     }
 }   
 
@@ -172,8 +209,8 @@ function reset() {
     hiddenWordEl.innerText=""
     //reset the guessed letters to blank
     guessesEl.innerText=""
-    //reset the status element
-    statusEl.innerText=""
+    //reset the statusEL back to black from red/green
+    statusEl.style.color = "black"
     init()
 }
 
@@ -186,3 +223,4 @@ function renderShip() {
 /*------ event listeners ------*/
 document.querySelector('#submit').addEventListener('click', handleChoice)
 document.querySelector('#reset').addEventListener('click', reset)
+document.querySelector('#db-choice').addEventListener('change', reset)
