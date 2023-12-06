@@ -38,6 +38,14 @@ const wordDB = [
     "TRANSCRIPT"
 ]
 
+const rockBandsDB = [
+    "PIXIES",
+    "QEEEN",
+    "NIRVANA",
+    "BEATLES",
+    "METALLICA"
+]
+
 
 /*------ cached element references ------*/
 
@@ -48,6 +56,7 @@ const statusEl = document.getElementById('status')
 const formEl = document.getElementById('formGuess')
 const imgEl = document.querySelector('img');
 const titleEl = document.querySelector('h1');
+const dbChoiceEl = document.querySelector('db-choice');
 //console.log("this is hword value: ", hiddenWordEl)
 
 
@@ -57,6 +66,7 @@ const titleEl = document.querySelector('h1');
 let wrongGuesses
 let guessedLetters
 let hiddenWord
+let dbChoice
 
 
 
@@ -69,15 +79,20 @@ function init() {
     //select the hidden word from wordDB
     console.log("hidden word is: ", hiddenWord)
     formEl.style.visibility = 'visible'
-    titleEl.classList.remove("animation") //remove the applied animation class
-    titleEl.offsetWidth //this causes a DOM reflow to allow for the animation class list to work on RESET
-    titleEl.classList.add("animation") //add the applied animation class
-    //eventually call render   
+    titleEl.classList.remove("animation") //remove the applied animation class to the h1(title)
+    titleEl.offsetWidth //this causes a DOM reflow to allow for the animation class list to work on RESET button
+    titleEl.classList.add("animation") //add the applied animation class to the h1(title)
     render() 
     renderShip()
 }
 
 init()
+
+function chooseDB() {
+    dbChoice = document.getElementById("db-choice").id
+    console.log("This is DB Choice", dbChoice)
+}
+chooseDB()
 
 function renderHiddenWord() {
     
@@ -138,11 +153,13 @@ function handleChoice(evt) {
 function winner() {
     //if the hiddenWord elent = the hiddenWord variable: WIN!!
     if (hiddenWordEl.innerText === hiddenWord) {
+        //update and style the element
         statusEl.innerText="Spaceman has been stopped. You have won!!"
         statusEl.style.color = "lightgreen"
         statusEl.style.textShadow = "4px 4px 20px #000000"
     } else if (wrongGuesses === 6) {
         //if wrongGuesses = 6: LOSE!
+        //update and style the element
         statusEl.innerText=`Spaceman has gotten away. The word was ${hiddenWord} Try again!!`
         statusEl.style.color = "darkred"
         statusEl.style.textShadow = "4px 4px 20px #000000"

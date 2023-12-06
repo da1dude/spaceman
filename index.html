@@ -15,7 +15,12 @@
     <main>
         <h1>SPACEMAN</h1>
         <h2 id="status"></h2>
-        <div id="form-area">
+        <div id="form-db-choice">
+            <label for="dog-names">Choose a topic:</label> 
+                <select name="topic" id="db-choice"> 
+                    <option value="random">Random</option> 
+                    <option value="rock-bands">Rock Bands</option> 
+                </select>
             <form id="formGuess">
                 <label for="guess">Take your best guess:</label>  <br>
                 <input type="text" id="guess" name="guess" autofocus minlength="1" maxlength="1" onkeydown="return /[A-Z]/i.test(event.key)"/>
