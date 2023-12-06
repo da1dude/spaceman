@@ -58,3 +58,13 @@ font-family: Arial, Helvetica, sans-serif;
 6) Render based on correct/incorrect
 
 7) Handle a player clicking the reset button
+
+## Next Steps
+
+1) Force the input box to always have focus for txt
+
+2) Additional CSS to spice it up
+
+3) Better images for the Spaceman
+
+4) Take notice of blank space and duplicate letters and prevent them

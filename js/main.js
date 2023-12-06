@@ -117,7 +117,7 @@ function chooseDB() {
     //grabing the value of the form HTML to choose which DB to use
     dbChoice = document.getElementById("db-choice").value
     //selecting the DB to use based on dbChoice
-    hiddenWord = `${dbChoice}`[Math.floor(Math.random() * `${dbChoice}`.length)]
+    //hiddenWord = `${dbChoice}`[Math.floor(Math.random() * `${dbChoice}`.length)]
     if (dbChoice === "db1") {
         hiddenWord = db1[Math.floor(Math.random() * db1.length)]
     } else if (dbChoice === "db2") {
