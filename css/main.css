@@ -3,6 +3,11 @@
     to {color: white;}
 }
 
+@media screen and (max-width: 600px) {
+    * {
+        font-size: 90%;
+    }
+} 
 
 * {
     font-family: 'Alfa Slab One', serif;
@@ -53,11 +58,11 @@ h2 {
 img {
     height: 48vmin;
     width: 50vmin;
-
 }
 
 #status {
     margin: auto;
+    text-shadow: 4px 4px 20px #000000;
 }
 
 #gboard {
@@ -85,7 +90,7 @@ img {
 }
 
 #form-db-choice {
-    padding-top: 4vmin;
+    padding-top: 6vmin;
 }
 
 input {
