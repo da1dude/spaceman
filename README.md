@@ -12,10 +12,10 @@ Spaceman is a friendly version of hangman. In this game a spaceship/spaceman is 
 
 # Images to display to the DOM
 
-- to be added
+- See below
 
 ## User Stories
-- As a user, I want to...
+As a user, I want to...
 - have a reset button (game will load with a current word)
 - have a area to input the guess
 - have a area to display incorrect guesses
