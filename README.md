@@ -2,7 +2,7 @@
 SPACEMAN
 
 # spaceman
-Spaceman is a friendly version of hangman. In this game a spaceship is built as incorrect guesses occur (max of 7). If the player makes too many incorrect guesses the spaceship takes off. The player wins the game by completing the word with guesses still available. 
+Spaceman is a friendly version of hangman. In this game a spaceship/spaceman is built as incorrect guesses occur (max of 6). If the player makes too many incorrect guesses the spaceship takes off. The player wins the game by completing the word with guesses still available. 
 
 ## Wireframes
 ![template](wireframe/template.png) 
@@ -78,3 +78,7 @@ font-family: Arial, Helvetica, sans-serif;
 3) Better images for the Spaceman
 
 4) Take notice of blank space and duplicate letters and prevent them
+
+5) Incorrect guess counter
+
+
