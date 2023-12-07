@@ -51,9 +51,9 @@ font-family: Arial, Helvetica, sans-serif;
     - letters correct
 
 4) Upon loading the app should:
-  4.1) Initialize the state variables
-  4.2) Render those values to the page
-  4.3) Wait for the user to enter a letter
+  - Initialize the state variables
+  - Render those values to the page
+  - Wait for the user to enter a letter
 
 
 5) Handle a player entering a letter
