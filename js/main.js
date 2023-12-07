@@ -150,7 +150,7 @@ function handleChoice(evt) {
     //console.log("this is the hidden word array", hiddenWordArray)
     //capturing the user guess and making it upper case
     let userGuess = document.getElementById("guess").value.toUpperCase()
-    console.log("this is the userGuessed letter: ", userGuess)
+    //console.log("this is the userGuessed letter: ", userGuess)
 
     if (hiddenWordArray.includes(userGuess)) {
         //play correct sound
@@ -169,7 +169,7 @@ function handleChoice(evt) {
         //play incorrect sound
         WRONG.play()
         wrongGuesses += 1
-        console.log("current wrong guesses: ", wrongGuesses)
+        //console.log("current wrong guesses: ", wrongGuesses)
     } 
     //updating the guessedLetters array
     guessedLetters.push(userGuess)
