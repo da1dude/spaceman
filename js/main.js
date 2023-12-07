@@ -66,8 +66,6 @@ const db3 = [
     "GREY",
     "MAGENTA",
     "LAVENDER"
-
-
 ]
 
 
@@ -149,10 +147,10 @@ function handleChoice(evt) {
     evt.preventDefault();
     //hidden word array split by letter so we can compare them to the guessed letter
     const hiddenWordArray = hiddenWord.split("");
-    console.log("this is the hidden word array", hiddenWordArray)
+    //console.log("this is the hidden word array", hiddenWordArray)
     //capturing the user guess and making it upper case
     let userGuess = document.getElementById("guess").value.toUpperCase()
-    console.log("this is the userGuessed letter: ", userGuess)
+    //console.log("this is the userGuessed letter: ", userGuess)
 
     if (hiddenWordArray.includes(userGuess)) {
         //play correct sound
@@ -171,11 +169,11 @@ function handleChoice(evt) {
         //play incorrect sound
         WRONG.play()
         wrongGuesses += 1
-        console.log("current wrong guesses: ", wrongGuesses)
+        //console.log("current wrong guesses: ", wrongGuesses)
     } 
     //updating the guessedLetters array
     guessedLetters.push(userGuess)
-    console.log("guessed letter aray: ", guessedLetters)
+    //console.log("guessed letter aray: ", guessedLetters)
     //updating the guesses element with the guessedLetters array
     guessesEl.innerText=guessedLetters
     //blank out the guess box
