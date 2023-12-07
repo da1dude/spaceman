@@ -34,7 +34,7 @@ const db1 = [
 
 const db2 = [
     "PIXIES",
-    "QEEEN",
+    "QUEEN",
     "NIRVANA",
     "BEATLES",
     "METALLICA",
