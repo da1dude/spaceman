@@ -80,3 +80,5 @@ font-family: Arial, Helvetica, sans-serif;
 4) Take notice of blank space and duplicate letters and prevent them
 
 5) Incorrect guess counter
+
+
